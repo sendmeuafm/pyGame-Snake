@@ -32,13 +32,14 @@ while  True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            print(f"{event}")
+            exit(0)
         elif event.type == pygame.KEYDOWN:
             keys = pygame.key.get_pressed()
             print(f"{keys}")
 
             if keys[pygame.K_ESCAPE]:
                 pygame.quit()
+                exit(0)
             elif keys[pygame.K_UP] and snake_direction != (0, cell_size):
                 snake_direction = (0,-cell_size)
             elif keys[pygame.K_DOWN] and snake_direction != (0, -cell_size):
@@ -61,6 +62,7 @@ while  True:
 
     if new_head[0] < 0 or new_head[1] < 0 or new_head[0] >= width or new_head[1] >= height:
         pygame.quit()
+        exit(0)
 
     screen.fill(black)
     draw_snake(snake)
